@@ -238,3 +238,6 @@ body{
 .left-panel.active .icon-flag{
     display: none;
 }
+.icon-theme{
+    filter: invert(1);
+}
