@@ -21,7 +21,7 @@
 .ears-row {
     display: flex;
     height: 70px;
-    gap: 320px;
+    gap: 280px;
     position: sticky;
     z-index: 10;
     pointer-events: none;
@@ -33,7 +33,7 @@
     position: relative;
 }
 
-.left-ear { flex: 0 0 calc(50vw - 100px - 162px); }
+.left-ear { flex: 0 0 calc(50vw - 100px - 142px); }
 .right-ear { flex: 1; }
 
 .left-ear::after {
