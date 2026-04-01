@@ -9,7 +9,8 @@ function renderGrid()
         const card = TaskRenderer.renderCard(mdString);
         taskgrid.appendChild(card);
     });
-
+    
+     applyLang(localStorage.getItem('lang') || 'ENG');
     taskEmptyText();
 }
 
@@ -48,6 +49,7 @@ taskgrid.addEventListener('click', (event) =>
 
     if (event.target.classList.contains('btn-edit'))
     {
+        
     const card = event.target.closest('.task-card');
     const id = card.getAttribute('data-id');
     const allTasks = TaskStore.getAll();

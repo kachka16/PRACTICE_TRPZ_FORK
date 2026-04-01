@@ -2,7 +2,7 @@ const currentLang = document.getElementById('current-lang');
 const langList = document.getElementById('lang-list');
 
 const translations = {
-        en:{
+        ENG:{
             nameuser:"Guest",
             emailuser: "Not logged in",
             maintext: "MAIN",
@@ -13,12 +13,19 @@ const translations = {
             lighttheme: "Light Mode",
             accounttext: "ACCOUNT",
             aboutuser: "About",
-            exituser: "Exit"
+            exituser: "Exit",
+            addtask: "Adding a task",
+            savetask: "Save",
+            canceltask: "Cancel",
+            archivetask:"Archive",
+            edittask: "Edit",
+            untitled: "Untitled Task",
+            nocontent: "No content"
         },
-        ua:{
+        UA:{
             nameuser:"Гість",
             emailuser: "Незареєстрований",
-            maintext: "ГОЛОВНЕ",
+            maintext: "ГОЛОВНА",
             archivetext: "Архів",
             settingtext: "НАЛАШТУВАННЯ",
             settinguser: "Налаштування",
@@ -26,9 +33,18 @@ const translations = {
             lighttheme: "Світла тема",
             accounttext: "АККАУНТ",
             aboutuser: "Про нас",
-            exituser: "Вихід"
+            exituser: "Вихід",
+            addtask: "Додати завдання",
+            savetask: "Зберегти",
+            canceltask: "Скасувати",
+            archivetask:"Архівувати",
+            edittask: "Редагувати",
+            untitled: "Без назви",
+            nocontent: "Нічого немає"
         }
 };
+
+const languageSelecter= document.querySelector("select");
 
 function deleteLang(selectedLang) {
     langList.querySelectorAll('li').forEach(li => {
@@ -38,22 +54,45 @@ function deleteLang(selectedLang) {
 
 deleteLang('ENG');
 
+function applyLang(langCode) {
+    const lang = translations[langCode];
+    if (!lang) return;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (lang[key]) el.innerText = lang[key];
+    });
+}
+
+applyLang('ENG'); 
+
+const savedLang = localStorage.getItem('lang') || 'ENG';
+applyLang(savedLang);
+deleteLang(savedLang);
+
+if (savedLang === 'UA') {
+    currentLang.innerHTML = `<img src="img/ua_flag.png" class="icon-flag"> UA`;
+} else {
+    currentLang.innerHTML = `<img src="img/usa_flag.png" class="icon-flag"> ENG`;
+}
+
+
 currentLang.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
     langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
 });
 
-langList.querySelectorAll('li').forEach(li =>{
-    li.addEventListener('click', (e) =>{
+langList.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', (e) => {
         e.stopPropagation();
-    const lang = li.dataset.lang;
-    const src = li.dataset.src;
-    currentLang.innerHTML = `<img src="${src}" class="icon-flag"> ${lang}`;
-    langList.style.display = 'none';
-    deleteLang(lang);
- });
-
+        const lang = li.dataset.lang;
+        const src = li.dataset.src;
+        currentLang.innerHTML = `<img src="${src}" class="icon-flag"> ${lang}`;
+        langList.style.display = 'none';
+        deleteLang(lang);
+        applyLang(lang); 
+        localStorage.setItem('lang', lang);
+    });
 });
  document.addEventListener('click', (e) => {
     if (!currentLang.contains(e.target) && !langList.contains(e.target)) {

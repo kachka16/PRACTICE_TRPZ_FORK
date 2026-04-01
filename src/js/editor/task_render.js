@@ -43,13 +43,13 @@ const TaskRenderer = (function()
         card.setAttribute('data-id', parsed.metadata.id);
         
         card.innerHTML = `
-            <input type="datetime-local" class="time-card" value="${dueDate}" />
+            <input type="datetime-local" class="time-card" value="${dueDate}" readonly />
             <input type="checkbox" class="checkbox-card" ${isChecked} />
-            <p class="text-title">${title}</p>
-            <p class="text-body">${formattedDescription}</p>
+            <p class="text-title" data-lang="titletask">${title}</p>
+            <p class="text-body" data-lang="bodytask">${formattedDescription}</p>
             <div class="card-bth">
-                <p class="btn-edit">Edit</p>
-                <p class="btn-delete">Archive</p>
+                <p class="btn-edit" data-lang="edittask">Edit</p>
+                <p class="btn-delete" data-lang="archivetask">Archive</p>
             </div>
         `;
 

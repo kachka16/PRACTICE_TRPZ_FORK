@@ -28,10 +28,13 @@ const TaskEditor = (function()
 
     function save()
     {
-        const title = titleInput.value.trim() || 'Untitled Task';
-        const content = contentArea.innerText  || 'No content';
+        const savedLang = localStorage.getItem('lang') || 'ENG';
+        const title = titleInput.value.trim() || translations[savedLang].untitled;
+        const content = contentArea.innerText || translations[savedLang].nocontent;
         const id = currentId || Date.now();
-        const dueDate = timeInput.value; 
+
+        const now = new Date();
+        const dueDate = timeInput.value || new Date(now - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
         const newMd =
 `---
 id: ${id}
