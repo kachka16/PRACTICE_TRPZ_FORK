@@ -22,6 +22,7 @@ const EditorEngine = (function()
         for (const tag of sortedMeta)
         {
             const format = HTML_TAGS[tag.type];
+            if (!format) continue;
             html = html.slice(0, tag.end)   + format.close + html.slice(tag.end);
             html = html.slice(0, tag.start) + format.open  + html.slice(tag.start);
         }
@@ -38,20 +39,39 @@ const EditorEngine = (function()
     function getState()
     { return state; }
 
-    function applyFormat(type, start, end)
-    {
-        if (start === end) return;
-        state.formattingMeta.push({ type, start, end });
-    }
+    function updateText(text)
+    { state.plainText = text; }
 
     function shiftMeta(cursorPosition, delta)
     {
-        for (let tag of state.formattingMeta)
+        for (const tag of state.formattingMeta)
         {
             if (tag.start >= cursorPosition) tag.start += delta;
             if (tag.end   >= cursorPosition) tag.end   += delta;
         }
+
+        state.formattingMeta = state.formattingMeta.filter(t => t.start < t.end);
     }
 
-    return { renderHTML, load, getState, applyFormat, shiftMeta };
+    function applyFormat(type, start, end)
+    {
+        if (start === end) return;
+        const coverIdx = state.formattingMeta.findIndex(t => t.type === type && t.start <= start && t.end >= end);
+
+        if (coverIdx !== -1)
+        {
+            const covering = state.formattingMeta.splice(coverIdx, 1)[0];
+            if (covering.start < start) state.formattingMeta.push({ type, start: covering.start, end: start });
+            if (covering.end > end) state.formattingMeta.push({ type, start: end, end: covering.end });
+            return;
+        }
+
+        state.formattingMeta.push({ type, start, end });
+    }
+
+    
+
+    
+    
+    return { renderHTML, load, getState, applyFormat, shiftMeta, updateText };
 })();
