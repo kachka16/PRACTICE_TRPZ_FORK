@@ -14,7 +14,7 @@ const translations = {
             accounttext: "ACCOUNT",
             aboutuser: "About",
             exituser: "Exit",
-            addtask: "Adding a task",
+            addtask: "Add task",
             tasktitle: "Task Title",       
             enterdesc: "Enter description...",
             savetask: "Save",
