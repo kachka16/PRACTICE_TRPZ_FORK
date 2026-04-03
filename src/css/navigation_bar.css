@@ -6,6 +6,7 @@
    font-family: "Inter", sans-serif; 
 }
 :root{
+    --text: black;
     --base-color: white;
     --color-panel:#000000;
     --color-behind-panel:#f9f9f9;
@@ -52,6 +53,7 @@
     --color-area-text:#3a4549;
     --color-time-text:rgb(51, 51, 51);
     --border-panel:#262b2d;
+    --text:white;
 }
 body{
     background-color: var(--base-color);
