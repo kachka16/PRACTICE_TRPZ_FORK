@@ -14,6 +14,29 @@ function renderGrid()
     taskEmptyText();
 }
 
+let todayTask = false;
+
+function renderTodayGrid()
+{
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0, 10);
+    if (todayTask) {
+        document.querySelectorAll('.task-card').forEach(card => {
+            card.style.display = '';
+        });
+        todayTask = false;
+        return;
+    }
+
+    document.querySelectorAll('.task-card').forEach(card => {
+    const dueDate = card.querySelector('.time-card').value || '';
+    if (dueDate !== '' && dueDate.slice(0, 10) !== todayStr) {
+        card.style.display = 'none';
+    }
+});
+todayTask = true;
+}
+
 const editor_overlay = document.getElementById('editor-overlay');
 function addTaskCard() { 
         TaskEditor.open();
