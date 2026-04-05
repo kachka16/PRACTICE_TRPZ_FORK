@@ -47,7 +47,7 @@ const TaskRenderer = (function()
         card.setAttribute('data-id', parsed.metadata.id);
         
         card.innerHTML = `
-            <input type="datetime-local" class="time-card" value="${dueDate}" readonly />
+           <input type="datetime-local" class="time-card" value="${dueDate}" onclick="viewCard('${parsed.metadata.id}')" readonly />
             <input type="checkbox" class="checkbox-card" ${isChecked} />
             <p class="text-title" data-lang="titletask">${title}</p>
             <p class="text-body" data-lang="bodytask">${formattedDescription}</p>

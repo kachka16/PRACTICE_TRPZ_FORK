@@ -115,6 +115,7 @@ ${mdContent}`;
         titleInput.value = '';
         timeInput.value = ''; 
         contentArea.innerHTML = '';
+
     }
 
     function save()

@@ -27,7 +27,8 @@ const translations = {
             today: "Today",
             sorting: "Sorting",
             addatask: "Add a task",
-            edittask2:"Edit task"
+            edittask2:"Edit task",
+            viewtask:"View task"
 
         },
         UA:{
@@ -55,7 +56,8 @@ const translations = {
             today: "Сьогодні",
             sorting: "Сортування",
             addatask: "Додати завдання",
-            edittask2:"Редагування завдання"
+            edittask2:"Редагування завдання",
+            viewtask:"Перегляд завдання"
         }
 };
 

@@ -121,6 +121,8 @@
     border-bottom-right-radius: 10px;
     border: 2px solid var(--border-panel);
     height: 300px;
+    overflow: auto;
+
 }
 .darkmode #editor-title::placeholder {
     color:var(--color-area-text);
