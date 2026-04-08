@@ -109,6 +109,7 @@ body{
 .menu .title{
     font-size: 10px;
     font-weight: 500; 
+    overflow: hidden; 
 }
 
 .user-details .name-user{

@@ -282,10 +282,15 @@
     width: 90vw;
     max-width: 800px;
     max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow-y: auto;
     
 }
 .about_f p{
    text-indent: 2em;
+   line-height: 1.6;
+   font-size: 22px;
 }
 .about_f span{
     font-size: 30px;
