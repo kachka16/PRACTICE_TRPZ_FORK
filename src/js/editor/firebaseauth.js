@@ -14,24 +14,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-  const submit_c = document.getElementById('submit-c');
+  const submit_r = document.getElementById('submit-r');
   const submit_l = document.getElementById('submit-l');
-submit_c.addEventListener("click", function(event){
+submit_r.addEventListener("click", function(event){
   event.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  /*const user_name = document.getElementById('username').value;
-  var user = auth.currentUser;
-  var user_data = {
-    email: email,
-    password: password,
-    user_name: user_name
-  }*/
+  const username = document.getElementById('user-register').value;
+  const email = document.getElementById('email-register').value;
+  const password = document.getElementById('password-register').value;
 
-  createUserWithEmailAndPassword( auth,email, password)
+  createUserWithEmailAndPassword( auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    alert("Creating account...")
+    localStorage.setItem('username', username);
+    alert("The account was created");
+    document.querySelector('.wrapper').classList.remove('active');
+
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -39,14 +36,14 @@ submit_c.addEventListener("click", function(event){
     alert(errorMessage)
   })
 });
+
 submit_l.addEventListener("click", function(event){
   event.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const email = document.getElementById('login-email').value; 
+  const password = document.getElementById('login-password').value;
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    alert("Login...")
     window.location.href = "home.html";
   })
   .catch((error) => {

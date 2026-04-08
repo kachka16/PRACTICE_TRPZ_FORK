@@ -28,6 +28,7 @@
      --color-hover:rgb(33, 26, 47);
      --border-panel:#c7c5c5;
      --color-area-text:rgb(124, 124, 124);
+     --background-form:url('../img/wallpaper_black.png') ;
 }
 .darkmode{
     --base-color: #090909;
@@ -54,6 +55,7 @@
     --color-time-text:rgb(51, 51, 51);
     --border-panel:#262b2d;
     --text:white;
+    --background-form:url('../img/wallpaper_green.png');
 }
 body{
     background-color: var(--base-color);
@@ -106,14 +108,20 @@ body{
 .user-details .title,
 .menu .title{
     font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    overflow: hidden;
-    
+    font-weight: 500; 
 }
-.user-details .name{
-    font-size:  14px;
+
+.user-details .name-user{
+    font-size: 14px;
     font-weight: 500;
+    overflow: hidden;  
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 150px; 
+}
+.user-details .email-user{
+    font-size:  13px;
+    font-weight: 300;
 }
 
 .menu ul li {

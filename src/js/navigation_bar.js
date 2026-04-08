@@ -3,7 +3,6 @@ const langList = document.getElementById('lang-list');
 
 const translations = {
         ENG:{
-            nameuser:"Guest",
             emailuser: "Not logged in",
             maintext: "MAIN",
             archivetext: "Archive",
@@ -33,7 +32,6 @@ const translations = {
 
         },
         UA:{
-            nameuser:"Гість",
             emailuser: "Незареєстрований",
             maintext: "ГОЛОВНА",
             archivetext: "Архів",

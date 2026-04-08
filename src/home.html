@@ -13,7 +13,7 @@
 
     <title>Тask management</title>
 </head>
-<body>
+<body class="home-page">
     <div class = "container">
         <div class = "left-panel active">
             <div class ="menu-btn"><img src="img/left.png" alt=" " class ="img-btn"></div>
@@ -22,8 +22,8 @@
                 <img src="img/user.png" alt=" ">
             </div>
             <div class = "user-details">
-                <p class = "title" data-lang="nameuser">Guest</p>
-                <p class = "name" data-lang="emailuser">Not logged in</p>
+                <p class = "name-user"></p>
+                <p class = "email-user" >Not logged in</p>
             </div>
             </div>
             <div class ="nav">
@@ -201,5 +201,11 @@
         <script src="js/navigation_bar.js"></script>
         <script src="js/task_grid.js"></script>
         <script src="js/task_edit.js"></script>
+        <script>
+            const savedUsername = localStorage.getItem('username');
+                if (savedUsername) {
+                    document.querySelector('.name-user').innerText = savedUsername;
+                }
+        </script>
 </body>
 </html>
