@@ -16,46 +16,46 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-document.getElementById('submit-r').addEventListener('click', async (e)=>{
+document.getElementById('submit-r').addEventListener('click', async (e) => {
   e.preventDefault();
   const username = document.getElementById('user-register').value;
   const email_r = document.getElementById('email-register').value;
   const password_r = document.getElementById('password-register').value;
+
   if (username === '') {
-        alert("Enter a username");
-        return;
+    alert("Enter a username");
+    return;
   }
-  const auth = getAuth();
-  const db = getFirestore();
 
   createUserWithEmailAndPassword(auth, email_r, password_r)
-.then(async (userCredential) => {
-    const user = userCredential.user;
-    const userData = {
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      const userData = {
         email: email_r,
         username: username
-    };
-    const docRef = doc(db, "users", user.uid);
-    await setDoc(docRef, userData);
-    window.location.href = "home.html";
-})
-.catch((error) => {
-    alert(error.message);
+      };
+      const docRef = doc(db, "users", user.uid);
+      await setDoc(docRef, userData);
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 });
-})
 
-const signIn = document.getElementById('submit-l');
-signIn.addEventListener('click', (event)=>{
+document.getElementById('submit-l').addEventListener('click', (event) => {
   event.preventDefault();
   const email_l = document.getElementById('login-email').value;
   const password_l = document.getElementById('login-password').value;
-  const auth = getAuth();
-   signInWithEmailAndPassword(auth, email_l, password_l)
-  .then(async (userCredential) => {
-    const user = userCredential.user;
-    window.location.href = "home.html";
-  })
-})
+
+  signInWithEmailAndPassword(auth, email_l, password_l)
+    .then((userCredential) => {
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+});
 /*const auth = getAuth(app);
   const submit_r = document.getElementById('submit-r');
   const submit_l = document.getElementById('submit-l');
