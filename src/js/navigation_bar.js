@@ -28,7 +28,8 @@ const translations = {
             addatask: "Add a task",
             edittask2:"Edit task",
             viewtask:"View task",
-            hometext:"Home"
+            hometext:"Home",
+            donetask:"Done task"
 
         },
         UA:{
@@ -57,7 +58,9 @@ const translations = {
             addatask: "Додати завдання",
             edittask2:"Редагування завдання",
             viewtask:"Перегляд завдання",
-            hometext:"Головна"
+            hometext:"Головна",
+            donetask:"Виконані завдання"
+
         }
 };
 
@@ -127,7 +130,9 @@ langList.querySelectorAll('li').forEach(li => {
     }
 });
 
-
+function exitaccount(){
+    window.location.href = "index.html";
+}
 
 
 $(".menu > ul > li").click(function (e) {
