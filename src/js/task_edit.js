@@ -285,11 +285,20 @@ color: ${taskColor}
 # ${title}
 ${mdContent}`;
 
+        const isNew = !currentId;
         if (currentId) TaskStore.update(id, newMd);
         else TaskStore.add(newMd);
 
         close();
-        if (typeof renderGrid === 'function') renderGrid();
+
+        setTimeout(() =>
+        {
+            if (typeof renderGrid === 'function')
+            {
+                if (document.startViewTransition) document.startViewTransition(() => renderGrid(isNew ? id : null));
+                else renderGrid(isNew ? id : null);
+            }
+        }, 300);
     }
     
     document.getElementById('editor-save').addEventListener('click', save);
