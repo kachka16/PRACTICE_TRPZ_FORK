@@ -34,7 +34,9 @@ function renderGrid(freshCardID = null)
     {
         const card = TaskRenderer.renderCard(taskObj.raw);
         if (card.getAttribute('data-id') === String(freshCardID)) card.classList.add('animate-in');
+        if (taskObj.meta.status === 'completed') card.style.opacity = '0.5';
         taskgrid.appendChild(card);
+
     });
     
     applyLang(localStorage.getItem('lang') || 'ENG');
@@ -63,6 +65,64 @@ function renderTodayGrid()
 });
 todayTask = true;
 }
+
+
+function renderCompletedGrid(id)
+{
+    const card = document.querySelector(`.task-card[data-id="${id}"]`);
+    const checkbox = document.querySelector(`.task-card[data-id="${id}"] .checkbox-card`);
+    if (!card) return;
+    if(checkbox.checked){
+    card.style.opacity = '0.4';
+    }
+    else if(!checkbox.checked){
+        card.style.opacity = '';
+    }
+}
+
+function completedTask(id) {
+    renderCompletedGrid(id);
+}
+let done = false;
+
+function DoneTask() {
+    if (done) {
+        document.querySelectorAll('.task-card').forEach(card => {
+            card.style.display = '';
+        });
+        done = false;
+        return;
+    }
+
+    document.querySelectorAll('.task-card').forEach(card => {
+        const checkbox = card.querySelector('.checkbox-card');
+        if (!checkbox.checked) {
+            card.style.display = 'none';
+        }
+    });
+    done = true;
+}
+function renderTodayGrid()
+{
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0, 10);
+    if (todayTask) {
+        document.querySelectorAll('.task-card').forEach(card => {
+            card.style.display = '';
+        });
+        todayTask = false;
+        return;
+    }
+
+    document.querySelectorAll('.task-card').forEach(card => {
+    const dueDate = card.querySelector('.time-card').value || '';
+    if (dueDate !== '' && dueDate.slice(0, 10) !== todayStr) {
+        card.style.display = 'none';
+    }
+});
+todayTask = true;
+}
+
 
 function addTaskCard()
 { TaskEditor.open(null, '', '', '', EditorMode.EDITOR); }

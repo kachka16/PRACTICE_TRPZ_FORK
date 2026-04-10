@@ -55,6 +55,7 @@
 
 
 #editor-time{
+    color: var(--color-title-card);
     position: static;
     width: auto;
     min-width: 200px;
