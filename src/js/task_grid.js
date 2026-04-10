@@ -1,3 +1,20 @@
+const GridViewMode =
+{
+    ALL_CARDS: 'allCards',
+    ALL_CALENDAR: 'allCalendar',
+    DONE: 'done',
+    TODAY: 'today',
+    ARCHIVE: 'archive'
+};
+
+let curGridViewMode;
+
+function setGridViewMode(mode)
+{
+    curGridViewMode = mode;
+    sortGrid();
+}
+
 const taskgrid = document.getElementById('task-grid');
 
 function sortGrid()
