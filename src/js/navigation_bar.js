@@ -181,3 +181,9 @@ document.getElementById('light').addEventListener('click',(e)=>{
     e.preventDefault();
     disableDarkmode();
 });
+
+function addCardAbout()
+{ document.querySelector('.about_div').classList.add('active'); }
+
+function closeAbout()
+{ document.querySelector('.about_div').classList.remove('active'); }
