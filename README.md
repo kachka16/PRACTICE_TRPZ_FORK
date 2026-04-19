@@ -32,11 +32,11 @@
 | Роль у проекті | Прізвище та Ім'я |
 | :--- | :--- |
 | **Program Management** | [Гунченко Владислава](https://github.com/vladagunchenko) |
-| **Release Management** | Бакулін Данііл |
-| **Product Management** | Барай Максим, Козлова Оксана |
-| **Development** | Левковська Марія, Єдалов Артем |
-| **Testing (QA)** | Савеля Максим, Зорій Ярослав |
-| **User Experience** | Москов Іван |
+| **Release Management** | [Бакулін Данііл](https://github.com/wukayy) |
+| **Product Management** | [Барай Максим](https://github.com/MaxXXxXXim), [Козлова Оксана](https://github.com/kkkseeekk) |
+| **Development** | [Левковська Марія](https://github.com/kachka16), [Єдалов Артем](https://github.com/Nic0ho) |
+| **Testing (QA)** | [Савеля Максим](https://github.com/twixu819), [Зорій Ярослав](https://github.com/Yarofff-07) |
+| **User Experience** | [Москов Іван](https://github.com/grumpiestjohn) |
 
 ---
 
