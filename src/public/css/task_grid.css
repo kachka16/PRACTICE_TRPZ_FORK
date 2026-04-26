@@ -147,6 +147,7 @@ input[type ="checkbox"]{
     background: var(--color-date);
     border: 2px solid var(--border-card);
      border-radius: 50%;
+    z-index: 10;
 }
 
 .checkbox-card:checked {
