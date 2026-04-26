@@ -29,8 +29,9 @@ const translations = {
             edittask2:"Edit task",
             viewtask:"View task",
             hometext:"Home",
-            donetask:"Done task"
-
+            donetask:"Done task",
+            unarchive: "Unarchive",
+            delete: "Delete"
         },
         UA:{
             emailuser: "Незареєстрований",
@@ -59,8 +60,9 @@ const translations = {
             edittask2:"Редагування завдання",
             viewtask:"Перегляд завдання",
             hometext:"Головна",
-            donetask:"Виконані завдання"
-
+            donetask:"Виконані завдання",
+            unarchive: "Розархівувати",
+            delete: "Видалити"
         }
 };
 
