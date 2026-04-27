@@ -35,11 +35,11 @@ onAuthStateChanged(auth, async (user) => {
       localStorage.setItem('tasks', JSON.stringify(data.tasks || []));
       if (typeof sortGrid === 'function') sortGrid();
     }
-  } else{
+  } else {
     if (window.location.pathname.includes("home.html")) {
       window.location.href = "index.html";
+    }
   }
-}
 });
 
 const submit_R = document.getElementById('submit-r');
@@ -84,6 +84,7 @@ if (submit_R) {
         }
       });
   });
+
 }
 
 if (submit_L) {
