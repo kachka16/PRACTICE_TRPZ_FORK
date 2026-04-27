@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
         el.textContent = data.email || user.email;
       });
       localStorage.setItem('tasks', JSON.stringify(data.tasks || []));
-      if (typeof renderGrid === 'function') renderGrid();
+      if (typeof sortGrid === 'function') sortGrid();
     }
   } else{
     if (window.location.pathname.includes("home.html")) {
@@ -53,11 +53,11 @@ if (submit_R) {
     const password_r = document.getElementById('password-register').value;
     const wrapper = document.querySelector('.wrapper');
 
-    if (username === '' || email_r ==='' || password_r === '') {
+    if (!username || !email_r || !password_r) {
       alert("Fill in all fields");
       return;
     }
-    if ( password_r.length <8){
+    if (password_r.length < 8) {
       alert("Password must be at least 8 characters");
       return;
     }
